@@ -1,0 +1,344 @@
+
+<link href="https://fonts.googleapis.com/css2?family=Phetsarath+OT&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body,html{font-family:'Phetsarath OT',sans-serif}
+:root{--red:#C8102E;--red-dark:#9b0d22;--red-light:#f7e6e9;--white:#fff;--gray:#f5f5f5;--text:#222;--text-muted:#666}
+.site-wrap{width:100%;min-height:100vh;background:var(--white)}
+
+/* NAV */
+nav{background:var(--red);padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:64px;position:sticky;top:0;z-index:100}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.logo-icon{width:40px;height:40px;background:var(--white);border-radius:8px;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.logo-icon svg{width:26px;height:26px}
+.logo-icon img{width:100%;height:100%;object-fit:cover;border-radius:8px}
+.logo-text{color:var(--white);font-size:22px;font-weight:900;letter-spacing:2px}
+.nav-links{display:flex;gap:4px;list-style:none}
+.nav-links a{color:var(--white);text-decoration:none;padding:8px 14px;border-radius:6px;font-size:15px;transition:background .2s}
+.nav-links a:hover{background:rgba(255,255,255,.18)}
+.nav-actions{display:flex;gap:10px;align-items:center}
+.btn-cart{background:var(--white);color:var(--red);border:none;border-radius:8px;padding:8px 16px;font-family:'Phetsarath OT',sans-serif;font-size:14px;cursor:pointer;display:flex;align-items:center;gap:6px;font-weight:600}
+.btn-cart:hover{background:#ffe0e4}
+.badge{background:var(--red);color:var(--white);border-radius:50%;width:18px;height:18px;font-size:11px;display:flex;align-items:center;justify-content:center;font-weight:700}
+
+/* HERO */
+.hero{background:linear-gradient(135deg,var(--red-dark) 0%,var(--red) 60%,#e8354a 100%);padding:60px 2rem;text-align:center;color:var(--white);position:relative;overflow:hidden}
+.hero-badge{display:inline-block;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);border-radius:20px;padding:4px 16px;font-size:13px;margin-bottom:16px}
+.hero h1{font-size:42px;font-weight:900;margin-bottom:10px;letter-spacing:3px}
+.hero p{font-size:17px;opacity:.9;max-width:480px;margin:0 auto 28px}
+.hero-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.btn-primary{background:var(--white);color:var(--red);border:none;border-radius:8px;padding:12px 28px;font-family:'Phetsarath OT',sans-serif;font-size:16px;cursor:pointer;font-weight:700}
+.btn-primary:hover{background:#ffe0e4}
+.btn-outline{background:transparent;color:var(--white);border:2px solid rgba(255,255,255,.6);border-radius:8px;padding:12px 28px;font-family:'Phetsarath OT',sans-serif;font-size:16px;cursor:pointer}
+.btn-outline:hover{background:rgba(255,255,255,.1)}
+.hero-decor{position:absolute;right:-40px;top:-40px;width:260px;height:260px;border-radius:50%;border:40px solid rgba(255,255,255,.06)}
+.hero-decor2{position:absolute;left:-60px;bottom:-60px;width:200px;height:200px;border-radius:50%;border:30px solid rgba(255,255,255,.05)}
+
+/* CATEGORIES */
+.section{padding:48px 2rem}
+.section-title{font-size:24px;font-weight:700;color:var(--red);margin-bottom:6px}
+.section-sub{font-size:14px;color:var(--text-muted);margin-bottom:28px}
+.cat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:16px}
+.cat-card{background:var(--red-light);border-radius:16px;padding:28px 16px;text-align:center;cursor:pointer;transition:transform .2s,box-shadow .2s;border:2px solid transparent}
+.cat-card:hover{transform:translateY(-4px);border-color:var(--red);box-shadow:0 6px 20px rgba(200,16,46,.15)}
+.cat-icon{font-size:40px;margin-bottom:12px}
+.cat-label{font-size:15px;font-weight:600;color:var(--red-dark)}
+.cat-count{font-size:12px;color:var(--text-muted);margin-top:4px}
+
+/* PRODUCTS */
+.products-bg{background:var(--gray)}
+.filter-tabs{display:flex;gap:8px;margin-bottom:24px;flex-wrap:wrap}
+.tab{background:var(--white);border:1.5px solid #ddd;border-radius:20px;padding:6px 18px;font-family:'Phetsarath OT',sans-serif;font-size:14px;cursor:pointer;transition:all .2s}
+.tab.active,.tab:hover{background:var(--red);color:var(--white);border-color:var(--red)}
+.prod-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:20px}
+.prod-card{background:var(--white);border-radius:14px;overflow:hidden;border:1px solid #eee;transition:transform .2s,box-shadow .2s;cursor:pointer}
+.prod-card:hover{transform:translateY(-4px);box-shadow:0 8px 24px rgba(0,0,0,.1)}
+.prod-img{height:160px;display:flex;align-items:center;justify-content:center;font-size:64px;background:var(--red-light);position:relative;overflow:hidden}
+.prod-img img{width:100%;height:100%;object-fit:cover}
+.prod-tag{position:absolute;top:10px;left:10px;background:var(--red);color:var(--white);font-size:11px;border-radius:4px;padding:2px 8px}
+.prod-body{padding:14px}
+.prod-name{font-size:14px;font-weight:600;color:var(--text);margin-bottom:4px}
+.prod-desc{font-size:12px;color:var(--text-muted);margin-bottom:10px}
+.prod-footer{display:flex;align-items:center;justify-content:space-between}
+.prod-price{font-size:16px;font-weight:700;color:var(--red)}
+.btn-add{background:var(--red);color:var(--white);border:none;border-radius:6px;padding:6px 12px;font-family:'Phetsarath OT',sans-serif;font-size:12px;cursor:pointer}
+.btn-add:hover{background:var(--red-dark)}
+
+/* BANNER */
+.promo-banner{background:var(--red);padding:40px 2rem;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.promo-text h2{color:var(--white);font-size:26px;margin-bottom:6px}
+.promo-text p{color:rgba(255,255,255,.85);font-size:15px}
+.promo-badge{background:rgba(255,255,255,.15);border:2px dashed rgba(255,255,255,.4);border-radius:12px;padding:16px 28px;text-align:center}
+.promo-code{font-size:28px;font-weight:900;color:var(--white);letter-spacing:4px}
+.promo-note{font-size:12px;color:rgba(255,255,255,.7);margin-top:4px}
+
+/* WHY US */
+.why-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:16px;margin-top:8px}
+.why-card{text-align:center;padding:24px 16px;background:var(--white);border-radius:14px;border:1px solid #eee}
+.why-icon{font-size:36px;margin-bottom:10px}
+.why-title{font-size:14px;font-weight:700;color:var(--text);margin-bottom:4px}
+.why-desc{font-size:12px;color:var(--text-muted)}
+
+/* FOOTER */
+footer{background:#1a0007;color:rgba(255,255,255,.85);padding:40px 2rem 20px}
+.footer-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:32px;margin-bottom:32px}
+.footer-brand .logo-text{font-size:20px}
+.footer-brand p{font-size:13px;opacity:.7;margin-top:8px;line-height:1.7}
+.footer-col h4{font-size:15px;font-weight:700;color:var(--white);margin-bottom:12px}
+.footer-col ul{list-style:none}
+.footer-col li{font-size:13px;opacity:.7;margin-bottom:8px;cursor:pointer}
+.footer-col li:hover{opacity:1;color:var(--red-light)}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.1);padding-top:20px;text-align:center;font-size:13px;opacity:.5}
+.social-row{display:flex;gap:10px;margin-top:12px}
+.soc-btn{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);border-radius:8px;padding:8px 12px;font-size:12px;cursor:pointer;color:var(--white)}
+.soc-btn:hover{background:var(--red)}
+
+/* TOAST */
+.toast{position:fixed;bottom:24px;right:24px;background:var(--red);color:var(--white);padding:12px 20px;border-radius:10px;font-family:'Phetsarath OT',sans-serif;font-size:14px;display:none;z-index:9999;box-shadow:0 4px 16px rgba(0,0,0,.2)}
+
+/* IMAGE MODAL */
+.prod-img{cursor:pointer}
+.img-modal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.85);z-index:10000;align-items:center;justify-content:center;padding:20px}
+.img-modal.active{display:flex}
+.img-modal-content{position:relative;max-width:90%;max-height:90%;display:flex;flex-direction:column;align-items:center}
+.img-modal-content img{max-width:100%;max-height:80vh;object-fit:contain;border-radius:8px;background:var(--white)}
+.img-modal-name{color:var(--white);margin-top:14px;font-size:16px;text-align:center}
+.img-modal-close{position:absolute;top:-40px;right:0;color:var(--white);font-size:32px;cursor:pointer;font-weight:bold;line-height:1}
+</style>
+
+<div class="site-wrap">
+<h2 class="sr-only" style="position:absolute;left:-9999px">ALPHAPRINT — ຮ້ານຂາຍເສື້ອພິມລາຍ ແລະ ອຸປະກອນບານເຕະ</h2>
+
+<!-- NAV -->
+<nav>
+  <a class="logo" href="javascript:void(0)" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+    <div class="logo-icon">
+      <!-- ใส่ไฟล์โลโก้เว็บที่นี่ (เปลี่ยน path ตามไฟล์จริงของคุณ) -->
+      <img src="images/logo.png" alt="ALPHAPRINT Logo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <svg viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg" style="display:none">
+        <rect x="2" y="7" width="22" height="14" rx="3" fill="#C8102E"/>
+        <path d="M8 7V5a5 5 0 0110 0v2" stroke="#C8102E" stroke-width="2" fill="none"/>
+        <text x="13" y="18" font-family="Arial" font-size="9" font-weight="900" fill="white" text-anchor="middle">AP</text>
+      </svg>
+    </div>
+    <span class="logo-text">ALPHAPRINT</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="javascript:void(0)" onclick="goHome()">ໜ້າຫຼັກ</a></li>
+    <li><a href="javascript:void(0)" onclick="filterProducts('shirt')">ເສື້ອພິມລາຍ</a></li>
+    <li><a href="javascript:void(0)" onclick="filterProducts('football')">ອຸປະກອນບານເຕະ</a></li>
+    <li><a href="javascript:void(0)" onclick="goPromo()">ໂປຣໂມຊັ່ນ</a></li>
+    <li><a href="javascript:void(0)" onclick="goContact()">ຕິດຕໍ່</a></li>
+  </ul>
+  <div class="nav-actions">
+    <button class="btn-cart" onclick="showToast('ກະຕ່າສິນຄ້າ ຍັງຫວ່າງ')">
+      🛒 ກະຕ່າ <span class="badge" id="cart-count">0</span>
+    </button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-decor"></div>
+  <div class="hero-decor2"></div>
+  <div class="hero-badge">✦ ເສື້ອພິມລາຍ ແລະ ອຸປະກອນບານເຕະຄົບວົງຈອນ</div>
+  <h1>ALPHAPRINT</h1>
+  <p>ເສື້ອພິມລາຍ ແລະ ອຸປະກອນບານເຕະຄົບວົງຈອນ</p>
+  <div class="hero-btns">
+    <button class="btn-primary" onclick="scrollTo(0,380)">🛍️ ຊ໋ອບສິນຄ້າ</button>
+    <button class="btn-outline" onclick="showToast('ກຳລັງໂຫລດ ໂປຣໂມຊັ່ນ...')">🎁 ໂປຣໂມຊັ່ນ</button>
+  </div>
+</section>
+
+<!-- CATEGORIES -->
+<section class="section">
+  <div class="section-title">🗂️ ໝວດໝູ່ສິນຄ້າ</div>
+  <div class="section-sub">ເລືອກສິນຄ້າທີ່ທ່ານຕ້ອງການ</div>
+  <div class="cat-grid">
+    <div class="cat-card" onclick="filterProducts('shirt')"><div class="cat-icon">👕</div><div class="cat-label">ເສື້ອພິມລາຍ</div><div class="cat-count">24 ລາຍການ</div></div>
+    <div class="cat-card" onclick="filterProducts('jersey')"><div class="cat-icon">🥅</div><div class="cat-label">ຊຸດບານເຕະ</div><div class="cat-count">18 ລາຍການ</div></div>
+    <div class="cat-card" onclick="filterProducts('ball')"><div class="cat-icon">⚽</div><div class="cat-label">ໝາກບານ</div><div class="cat-count">12 ລາຍການ</div></div>
+    <div class="cat-card" onclick="filterProducts('shoe')"><div class="cat-icon">👟</div><div class="cat-label">ເກີບສະຕັ໊ດ</div><div class="cat-count">16 ລາຍການ</div></div>
+    <div class="cat-card" onclick="filterProducts('custom')"><div class="cat-icon">🖨️</div><div class="cat-label">ສັ່ງພິມດ່ວນ</div><div class="cat-count">ສັ່ງໄດ້ທຸກຮູບ</div></div>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section class="section products-bg" id="products">
+  <div class="section-title">⭐ ສິນຄ້າແນະນຳ</div>
+  <div class="section-sub">ສິນຄ້າຂາຍດີ ປະຈຳເດືອນ</div>
+  <div class="filter-tabs">
+    <button class="tab active" onclick="setTab(this,'all')">ທັງໝົດ</button>
+    <button class="tab" onclick="setTab(this,'shirt')">ເສື້ອພິມລາຍ</button>
+    <button class="tab" onclick="setTab(this,'football')">ອຸປະກອນບານເຕະ</button>
+    <button class="tab" onclick="setTab(this,'new')">ສິນຄ້າໃໝ່</button>
+  </div>
+  <div class="prod-grid" id="prod-grid"></div>  
+</section>
+
+<!-- PROMO BANNER -->
+<div class="promo-banner" id="promo">
+  <div class="promo-text">
+    <h2>🔥 ໂປຣປະຈຳເດືອນ</h2>
+    <p>ຊື້13ໂຕ ເຮົາແຖມ1ໂຕ ໃນລາຄາທີ່ຍ່ອມເຍົາ</p>
+  </div>
+  <div class="promo-badge">
+    <div class="promo-code">ALPHA20</div>
+    <div class="promo-note">ໃຊ້ໂຄດ​ນີ້ຕອນສ່ັງຊື້</div>
+  </div>
+</div>
+
+<!-- WHY US -->
+<section class="section">
+  <div class="section-title">💪 ເປັນຫຍັງຕ້ອງເລືອກ ALPHAPRINT</div>
+  <div class="section-sub">ບໍລິການດີ ຄຸນນະພາບເດັດ</div>
+  <div class="why-grid">
+    <div class="why-card"><div class="why-icon">🎨</div><div class="why-title">ເສື້ອພິມລາຍຄຸນນະພາບສູງ</div><div class="why-desc">ສີສົດ ສີງາມ ລາຍແຈ້ງ</div></div>
+    <div class="why-card"><div class="why-icon">⚡</div><div class="why-title">ງານດ່ວນ 24 ຊົ່ວໂມງ</div><div class="why-desc">ສັ່ງໃຫ້ ໄດ້ຮັບທັນ</div></div>
+    <div class="why-card"><div class="why-icon">🏷️</div><div class="why-title">ລາຄາຍ່ອມເຍົາ</div><div class="why-desc">ຄ່ອງໃຈ ທຸກງົບ</div></div>
+    <div class="why-card"><div class="why-icon">🎯</div><div class="why-title">ສິນຄ້າຄົບຄ່ອງ</div><div class="why-desc">ຊຸດ + ອຸປະກອນ ທຸກຢ່າງ</div></div>
+    <div class="why-card"><div class="why-icon">📦</div><div class="why-title">ສົ່ງທົ່ວປະເທດ</div><div class="why-desc">ສ່ົງຮອດທຸກແຂວງ</div></div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer id="contact">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="logo-text" style="color:#fff">ALPHAPRINT</div>
+      <p>ຮ້ານຂາຍເສື້ອພິມລາຍ ແລະ ອຸປະກອນບານເຕະ ຄຸນນະພາບດີ ໃນລາຄາ​ຈັບຕ້ອງໄດ້</p>
+      <div class="social-row">
+        <button onclick="window.location.href='https://www.facebook.com/profile.php?id=61589133735977'" class="soc-btn">📘 Facebook</button>
+        <button onclick="window.location.href='https://wa.me/8562051923510'" class="soc-btn">Whatapp</button>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>  </h4>
+      <ul>
+        <li>ໜ້າຫຼັກ</li>
+        <li>ເສື້ອພິມລາຍ</li>
+        <li>ອຸປະກອນບານເຕະ</li>
+        <li>ໂປຣໂມຊັ່ນ</li>
+        <li>ກ່ຽວກັບເຮົາ</li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>ບໍລິການ</h4>
+      <ul>
+        <li>ສັ່ງພິມເສື້ອ</li>
+        <li>ອອກແບບໂລໂກ</li>
+        <li>ຊຸດທີມ</li>
+        <li>ສ່ົງດ່ວນ</li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>ຕິດຕໍ່</h4>
+      <ul>
+        <li>📍 ວຽງຈັນ, ລາວ</li>
+        <li>📞 020-5192-23510</li>
+        <li>📧 alphaprintstudio12@email.com</li>
+        <li>🕐 ຈ-ສ: 8:00–18:00</li>
+      </ul>
+    </div>    
+  </div>
+  <div class="footer-bottom">© 2025 ALPHAPRINT — ສະຫງວນລິຂະສິດ</div>
+</footer>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<!-- IMAGE MODAL -->
+<div class="img-modal" id="img-modal" onclick="closeImgModal(event)">
+  <div class="img-modal-content">
+    <span class="img-modal-close" onclick="closeImgModal(event)">&times;</span>
+    <img id="img-modal-img" src="" alt="">
+    <div class="img-modal-name" id="img-modal-name"></div>
+  </div>
+</div>
+
+<script>
+const products=[
+  {id:1,name:'ເສື້ອພິມລາຍ Classic',desc:'ໂຄຕ້ອນ 100% ນຸ່ງສະບາຍ',price:'80,000 ກີບ',icon:'👕',img:'images/product1.jpg',tag:'ຂາຍດີ',cat:'shirt'},
+  {id:1,name:'ເສື້ອພິມລາຍ Classic',desc:'ໂຄຕ້ອນ 100% ນຸ່ງສະບາຍ',price:'80,000 ກີບ',icon:'👕',img:'images/product2.jpg',tag:'ຂາຍດີ',cat:'shirt'},
+  {id:1,name:'ເສື້ອພິມລາຍ Classic',desc:'ໂຄຕ້ອນ 100% ນຸ່ງສະບາຍ',price:'80,000 ກີບ',icon:'👕',img:'images/product3.jpg',tag:'ຂາຍດີ',cat:'shirt'},
+  {id:1,name:'ເສື້ອພິມລາຍ Classic',desc:'ໂຄຕ້ອນ 100% ນຸ່ງສະບາຍ',price:'80,000 ກີບ',icon:'👕',img:'images/product4.jpg',tag:'ຂາຍດີ',cat:'shirt'},
+  {id:1,name:'ເສື້ອພິມລາຍ Classic',desc:'ໂຄຕ້ອນ 100% ນຸ່ງສະບາຍ',price:'80,000 ກີບ',icon:'👕',img:'images/product5.jpg',tag:'ຂາຍດີ',cat:'shirt'},
+  {id:1,name:'ເສື້ອພິມລາຍ Classic',desc:'ໂຄຕ້ອນ 100% ນຸ່ງສະບາຍ',price:'80,000 ກີບ',icon:'👕',img:'images/product6.jpg',tag:'ຂາຍດີ',cat:'shirt'},
+  {id:1,name:'ເສື້ອພິມລາຍ Classic',desc:'ໂຄຕ້ອນ 100% ນຸ່ງສະບາຍ',price:'80,000 ກີບ',icon:'👕',img:'images/product7.jpg',tag:'ຂາຍດີ',cat:'shirt'},
+  {id:1,name:'ເສື້ອພິມລາຍ Classic',desc:'ໂຄຕ້ອນ 100% ນຸ່ງສະບາຍ',price:'80,000 ກີບ',icon:'👕',img:'images/product8.jpg',tag:'ຂາຍດີ',cat:'shirt'},
+  {id:1,name:'ເສື້ອພິມລາຍ Classic',desc:'ໂຄຕ້ອນ 100% ນຸ່ງສະບາຍ',price:'80,000 ກີບ',icon:'👕',img:'images/product9.jpg',tag:'ຂາຍດີ',cat:'shirt'},
+  {id:4,name:'ລູກຟຸດບານ Pro',desc:'ມາດຕະຖານ FIFA',price:'250,000 ກີບ',icon:'⚽',img:'images/product.jpg',tag:'ຂາຍດີ',cat:'football'},
+  {id:5,name:'ຊຸດຟຸດບານທີມ',desc:'ຄົບ ເສື້ອ + ໂສ້ງ',price:'180,000 ກີບ',icon:'🥅',img:'images/product.jpg',tag:'ໃໝ່',cat:'football'},
+  {id:6,name:'ເກີບຟຸດບານ Speed',desc:'ໂຕນ໌ Turbo Grip',price:'350,000 ກີບ',icon:'👟',img:'images/product.jpg',tag:'Hot',cat:'football'},
+  {id:8,name:'ຖົງໃສ່ເກີບ',desc:'ໃສ່ອຸປະກອນໄດ້ຫຼາຍ',price:'140,000 ກີບ',icon:'🎒',img:'images/product.jpg',tag:'ນິຍົມ',cat:'football'},
+];
+let cart=0;
+function renderProds(filter='all'){
+  const g=document.getElementById('prod-grid');
+  const list=filter==='all'?products:filter==='new'?products.filter((_,i)=>i%3===1):products.filter(p=>p.cat===filter);
+  g.innerHTML=list.map(p=>`
+    <div class="prod-card">
+      <div class="prod-img" onclick="openImgModal('${p.img}','${p.name}')">
+        <span class="prod-icon-fallback">${p.icon}</span>
+        <img src="${p.img}" alt="${p.name}" onerror="this.style.display='none'" onload="this.previousElementSibling.style.display='none'">
+        <span class="prod-tag">${p.tag}</span>
+      </div>
+      <div class="prod-body">
+        <div class="prod-name">${p.name}</div>
+        <div class="prod-desc">${p.desc}</div>
+        <div class="prod-footer">
+          <span class="prod-price">${p.price}</span>
+          <button class="btn-add" onclick="addCart('${p.name}')">+ ເພີ່ມ</button>
+        </div>
+      </div>
+    </div>`).join('');
+}
+function addCart(name){cart++;document.getElementById('cart-count').textContent=cart;showToast('✅ ເພີ່ມ '+name+' ເຂົ້າກະຕ່າແລ້ວ!')}
+function openImgModal(src,name){
+  document.getElementById('img-modal-img').src=src;
+  document.getElementById('img-modal-img').alt=name;
+  document.getElementById('img-modal-name').textContent=name;
+  document.getElementById('img-modal').classList.add('active');
+}
+function closeImgModal(e){
+  if(e.target.id==='img-modal'||e.target.classList.contains('img-modal-close')){
+    document.getElementById('img-modal').classList.remove('active');
+  }
+}
+document.addEventListener('keydown',function(e){
+  if(e.key==='Escape')document.getElementById('img-modal').classList.remove('active');
+});
+function syncTabs(filter){
+  const map={shirt:'shirt',football:'football',all:'all'};
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  const targets=document.querySelectorAll('.tab');
+  let idx=0;
+  if(filter==='shirt')idx=1;else if(filter==='football')idx=2;else idx=0;
+  if(targets[idx])targets[idx].classList.add('active');
+}
+function filterProducts(cat){
+  const f=cat==='ball'||cat==='shoe'?'football':cat;
+  renderProds(f);
+  syncTabs(f);
+  document.getElementById('products').scrollIntoView({behavior:'smooth'});
+}
+function goHome(){
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function goPromo(){
+  document.getElementById('promo').scrollIntoView({behavior:'smooth'});
+}
+function goContact(){
+  document.getElementById('contact').scrollIntoView({behavior:'smooth'});
+}
+function setTab(el,filter){
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  el.classList.add('active');renderProds(filter);
+}
+function showToast(msg){
+  const t=document.getElementById('toast');
+  t.textContent=msg;t.style.display='block';
+  clearTimeout(t._t);t._t=setTimeout(()=>t.style.display='none',2500);
+}
+renderProds();
+</script>
